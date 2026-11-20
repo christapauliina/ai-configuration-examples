@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.12.12412.261 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-StatelessModel", "01-StatelessModel\01-StatelessModel.csproj", "{745D2DFC-4B26-9D40-7566-BE7B5BABF5C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AiConfiguration.Common", "AiConfiguration.Common", "{5B0F1E6E-E914-475B-BE76-E73FC4AA1A85}"
+	ProjectSection(SolutionItems) = preProject
+		ClientFactory.cs = ClientFactory.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{782475B5-0D90-4A51-B2B9-57CE57ACBF73}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{745D2DFC-4B26-9D40-7566-BE7B5BABF5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{745D2DFC-4B26-9D40-7566-BE7B5BABF5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{745D2DFC-4B26-9D40-7566-BE7B5BABF5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{745D2DFC-4B26-9D40-7566-BE7B5BABF5C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7ED07941-85A4-424C-A91B-0A8530FA9227}
+	EndGlobalSection
+EndGlobal

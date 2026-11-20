@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+
+[Bb]in/
+[Oo]bj/
+
+.vs/
+.vscode/
+*.user
