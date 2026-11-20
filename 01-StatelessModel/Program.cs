@@ -10,10 +10,11 @@ using Microsoft.Extensions.AI;
 
 IChatClient client = ClientFactory.Create();
 Console.WriteLine("01. Stateless model Demo");
+Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 while (true)
 {
-    Console.WriteLine("Enter a prompt or 'quit' to exit:");
+    Console.WriteLine("You:");
     string? prompt = Console.ReadLine();
 
     if (prompt == "quit")
@@ -21,7 +22,7 @@ while (true)
 
     ChatResponse response = await client.GetResponseAsync(prompt!); // notice the parameter is just a string -> this is only valid if every prompt is an independent interaction
 
-    Console.WriteLine($"AI: {response.Text}\n");
+    Console.WriteLine($"\nAI: {response.Text}");
     Console.WriteLine($"Tokens used: {response.Usage?.TotalTokenCount} (In: {response.Usage?.InputTokenCount}, Out: {response.Usage?.OutputTokenCount})\n"); // printing token usage instead of logging for demonstration purposes.
 }
     
