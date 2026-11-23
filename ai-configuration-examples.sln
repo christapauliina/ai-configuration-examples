@@ -16,9 +16,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIConfiguration.Common", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-ModelWithHistory", "02-ModelWithHistory\02-ModelWithHistory.csproj", "{41C98994-739E-4758-904B-5420BA3A845B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-AgentWithBuiltInTool", "AgentWithBuiltInTool\03-AgentWithBuiltInTool.csproj", "{34F577CB-E1BC-40D4-95A5-DE53B0D9F793}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-AgentWithBuiltInTool", "AgentWithBuiltInTool\06-AgentWithBuiltInTool.csproj", "{34F577CB-E1BC-40D4-95A5-DE53B0D9F793}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-AgentWithCustomTool", "04-AgentWithCustomTool\04-AgentWithCustomTool.csproj", "{4BDAE7F4-0F70-4BD1-B74D-8ED1957932C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-AgentWithCustomTool", "04-AgentWithCustomTool\07-AgentWithCustomTool.csproj", "{4BDAE7F4-0F70-4BD1-B74D-8ED1957932C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-ModelWithSystemPrompt", "03-ModelWithSystemPrompt\03-ModelWithSystemPrompt.csproj", "{2E39D364-2DF8-4FC8-A4D9-8B0F3D19D595}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ModelWithReasoningControl", "04.ModelWithReasoningControl\04.ModelWithReasoningControl.csproj", "{2710F632-6EDE-4F4F-9C5C-4C70E2D52D1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +50,14 @@ Global
 		{4BDAE7F4-0F70-4BD1-B74D-8ED1957932C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BDAE7F4-0F70-4BD1-B74D-8ED1957932C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BDAE7F4-0F70-4BD1-B74D-8ED1957932C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E39D364-2DF8-4FC8-A4D9-8B0F3D19D595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E39D364-2DF8-4FC8-A4D9-8B0F3D19D595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E39D364-2DF8-4FC8-A4D9-8B0F3D19D595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E39D364-2DF8-4FC8-A4D9-8B0F3D19D595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2710F632-6EDE-4F4F-9C5C-4C70E2D52D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2710F632-6EDE-4F4F-9C5C-4C70E2D52D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2710F632-6EDE-4F4F-9C5C-4C70E2D52D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2710F632-6EDE-4F4F-9C5C-4C70E2D52D1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

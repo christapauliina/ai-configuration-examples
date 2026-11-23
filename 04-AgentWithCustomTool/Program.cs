@@ -1,8 +1,7 @@
 ﻿// ============================================================================
 // Showcasing giving agent a simple custom tool for its use. 
 // 
-// Test: First greet the model briefly - notice the token count. Tool's json schema goes with every API call, even if you don't use the tool
-// Second: Ask the model to count the number of files in your Downloads folder. The model will call the custom tool CountDownloadedFiles() to get the result.
+// Test: Ask the model to count the number of files in your Downloads folder. The model will call the custom tool CountDownloadedFiles() to get the result.
 //
 // Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
 // ============================================================================
@@ -12,7 +11,7 @@ using Microsoft.Extensions.AI;
 
 // Wrap the base client with function invocation middleware.
 // Unlike built-in cloud tools, custom tools run locally in our application—this automatically intercepts tool call requests from the model, executes our C# method, and sends the result back.
-IChatClient client = ClientFactory.Create()
+IChatClient client = ClientFactory.CreateResponsesClient()
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();

@@ -1,8 +1,4 @@
 ﻿using Microsoft.Extensions.AI;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AIConfiguration.Common
 {
@@ -31,6 +27,24 @@ namespace AIConfiguration.Common
                 }
             }
      
+        }
+
+        public static void PrintReasoning(ChatResponse response)
+        {
+            foreach (ChatMessage message in response.Messages)
+            {
+                foreach (TextReasoningContent reasoning in message.Contents.OfType<TextReasoningContent>())
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine($"\n[Reasoning]:\n{reasoning.Text}");
+                    Console.ResetColor();
+                }
+            }
+            long? reasoningTokens = response.Usage?.ReasoningTokenCount;
+            if (reasoningTokens is not null)
+            {
+                Console.WriteLine($"  └─ Reasoning tokens: {reasoningTokens}");
+            }
         }
     }
 }
