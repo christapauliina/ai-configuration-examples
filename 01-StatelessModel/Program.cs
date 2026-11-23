@@ -23,6 +23,6 @@ while (true)
     ChatResponse response = await client.GetResponseAsync(prompt!); // notice the parameter is just a string -> this is only valid if every prompt is an independent interaction
 
     Console.WriteLine($"\nAI: {response.Text}");
-    Console.WriteLine($"Tokens used: {response.Usage?.TotalTokenCount} (In: {response.Usage?.InputTokenCount}, Out: {response.Usage?.OutputTokenCount})\n"); // printing token usage instead of logging for demonstration purposes.
+    Console.WriteLine($"Tokens used: {response.Usage?.TotalTokenCount} (In: {response.Usage?.InputTokenCount}, Out: {response.Usage?.OutputTokenCount})\n"); // printing token usage instead of logging for demonstration purposes. Next demos will use AIConfiguration.Common.ResponseExtension.PrintTokenUsage to print token usage.
 }
     
