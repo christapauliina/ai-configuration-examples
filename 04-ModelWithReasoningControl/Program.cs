@@ -1,13 +1,12 @@
 ﻿/*
 ===========================================================================================================================
 Connecting to a model and controlling its reasoning effort
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/03.model-parameters
 
 Test: Give this prompt to application:
-
-"I have a demo comparing two reasoning models—one configured with low reasoning effort and the other with high reasoning effort.
-Give me a short test prompt that produces a concise final answer, while clearly highlighting the difference between the two models in
-both their reasoning traces and reasoning token counts."
-
+    "I have a demo comparing two reasoning models—one configured with low reasoning effort and the other with high reasoning effort.
+    Give me a short test prompt that produces a concise final answer, while clearly highlighting the difference between the two models in
+    both their reasoning traces and reasoning token counts."
 Compare the differences in the answers, reasoning and token consumption.
 
 Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.

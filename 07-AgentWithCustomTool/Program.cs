@@ -1,6 +1,7 @@
 ﻿/*
 ===========================================================================================================================
 Showcasing giving agent a simple custom tool for its use. 
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/04.agent-tools
  
 Test: Ask the model to count the number of files in your Downloads folder. The model will call the custom tool CountDownloadedFiles() to get the result.
 

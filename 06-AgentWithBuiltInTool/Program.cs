@@ -1,6 +1,7 @@
 ﻿/*
 ===========================================================================================================================
 Giving the model the ability to search the internet via the built-in web search tool.
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/04.agent-tools
  
 Test:
 1. greet the model briefly - notice the token count. Tool's json schema goes with every API call, even if you don't use the tool

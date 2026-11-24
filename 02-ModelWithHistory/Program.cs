@@ -1,8 +1,10 @@
 ﻿/*
 ===========================================================================================================================
 Connecting to a model and creating a history of interactions, so the model can remember previous prompts and responses.
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/01.model-memory
  
 Test: Tell the model your name and ask it to remember it. Then ask it for your name again - notice the difference in token consumption
+
 Tip: If wanting to limit token consumption, you can  limit the number of messages in history for example using history.TakeLast(5).
 
 Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.

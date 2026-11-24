@@ -1,6 +1,7 @@
 ﻿/*
 ===========================================================================================================================
 Connecting an agent to an external MCP server (demonstrated with Power BI MCP) to inspect a semantic model and execute DAX queries via standardized tools.
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/05.agent-mcp
  
 Configure: 
 1. Download the Power BI Modeling MCP server (https://github.com/microsoft/powerbi-modeling-mcp/releases).
@@ -52,7 +53,7 @@ ChatOptions options = new()
 
 List<ChatMessage> history = [];
 
-Console.WriteLine("09. Agent with External MCP Server (Power BI)");
+Console.WriteLine("08. Agent with External MCP Server (Power BI)");
 Console.WriteLine($"Connected. Loaded {tools.Count} MCP tools: {string.Join(", ", tools.Select(t => t.Name))}\n"); // printing the availbe tools fo user
 Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
@@ -64,7 +65,7 @@ while (true)
     if (prompt == "quit")
         break;
 
-    history.Add(new ChatMessage(ChatRole.User, prompt!));
+    history.AddRange(new ChatMessage(ChatRole.User, prompt!));
 
     ChatResponse response = await client.GetResponseAsync(history,options); 
 

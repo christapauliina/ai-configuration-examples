@@ -1,6 +1,7 @@
 ﻿/*
 ===========================================================================================================================
 Creating a simple multiagent orchestration workflow with three agents: 1) Research Agent, 2) Analyst Agent, and 3) Writer Agent, where the Research Agent is a tool for Analyst Agent. 
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/06.advanced-orchestration
 
 Test: Enter a profession and a topic when prompted to generate a LinkedIn post written from that professional's perspective.
 

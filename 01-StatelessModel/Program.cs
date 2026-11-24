@@ -1,6 +1,7 @@
 ﻿/*
 ===========================================================================================================================
 Connecting to a stateless model, no memory of previous interactions. Each prompt is independent of the previous ones.
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/01.model-memory
  
 Test: Tell the model your name and ask it to remember it. Then ask it for your name again. 
 

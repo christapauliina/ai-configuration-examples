@@ -1,6 +1,7 @@
 ﻿/*
 ===========================================================================================================================
 Connecting to a model and creating a system prompt to guide its behavior.
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/02.model-systemprompt
 
 Test: First ask the model about food instructions, then ask it to give you instructions for painting a wall. Notice the difference in the model's behavior and responses.
 

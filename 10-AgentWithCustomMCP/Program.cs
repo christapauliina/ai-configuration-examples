@@ -1,6 +1,7 @@
 ﻿/*
 ===========================================================================================================================
 Connecting an agent to an custom MCP server 
+Docs: https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/05.agent-mcp
 
 Test: Greet the agent and notice the token consumption. Then ask the agent to count the number of files in your Downloads folder and the total size of files in your Downloads folder.
 
