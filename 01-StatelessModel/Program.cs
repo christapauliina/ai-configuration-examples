@@ -1,14 +1,18 @@
-﻿// ============================================================================
-// Connecting to a stateless model, no memory of previous interactions. Each prompt is independent of the previous ones.
-// 
-// Test: Tell the model your name and ask it to remember it. Then ask it for your name again. 
-// Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// ============================================================================
+﻿/*
+===========================================================================================================================
+Connecting to a stateless model, no memory of previous interactions. Each prompt is independent of the previous ones.
+ 
+Test: Tell the model your name and ask it to remember it. Then ask it for your name again. 
 
+Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+===========================================================================================================================
+*/
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
 
+// Using Chat Completions API defined in ClientFactory
 IChatClient client = ClientFactory.Create();
+
 Console.WriteLine("01. Stateless model Demo");
 Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 

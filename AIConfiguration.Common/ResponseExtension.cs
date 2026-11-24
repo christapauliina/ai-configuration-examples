@@ -18,15 +18,8 @@ namespace AIConfiguration.Common
                     case ToolCallContent call:
                         Console.WriteLine($"[Tool Call] {call.GetType().Name}");
                         break;
-                    case TextContent text when text.Annotations is { Count: > 0 }:
-                        foreach (var citation in text.Annotations.OfType<CitationAnnotation>())
-                        {
-                            Console.WriteLine($"[Source] {citation.Title} -> {citation.Url}");
-                        }
-                        break;
                 }
             }
-     
         }
 
         public static void PrintReasoning(ChatResponse response)

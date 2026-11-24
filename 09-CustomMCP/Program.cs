@@ -1,8 +1,10 @@
-﻿// ============================================================================
-// Building a custom local MCP server with local Downloads folder inspection tools over standard input/output (stdio).
-// 
-// Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// ============================================================================
+﻿/*
+===========================================================================================================================
+Building a custom local MCP server with local Downloads folder inspection tools over standard input/output (stdio).
+ 
+Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+===========================================================================================================================
+*/
 
 using System.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,8 +26,7 @@ builder.Services
 // Build and run the application, which starts the MCP server and waits for incoming requests from the agent.
 await builder.Build().RunAsync();
 
-//Custom tools for the MCP server
-
+//bCreating custom tools for the MCP server
 [McpServerToolType]
 public static class DownloadsTools
 {

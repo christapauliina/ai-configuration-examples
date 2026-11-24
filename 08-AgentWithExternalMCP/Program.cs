@@ -1,15 +1,17 @@
-﻿// ========================================================================================================================================================
-// Connecting an agent to an external MCP server (demonstrated with Power BI MCP) to inspect a semantic model and execute DAX queries via standardized tools.
-// 
-// Configure: 
-// 1. Download the Power BI Modeling MCP server (https://github.com/microsoft/powerbi-modeling-mcp/releases).
-// 2. Add the executable path to your .env file as POWERBI_MCP_PATH.
-// 3. Open the target .pbix report file in Power BI Desktop before running this app.
-//
-// Test: Ask the agent for example: "What tables and measures exist in the semantic model?" or "Compare the average body mass across penguin species."
-//
-// Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// ========================================================================================================================================================
+﻿/*
+===========================================================================================================================
+Connecting an agent to an external MCP server (demonstrated with Power BI MCP) to inspect a semantic model and execute DAX queries via standardized tools.
+ 
+Configure: 
+1. Download the Power BI Modeling MCP server (https://github.com/microsoft/powerbi-modeling-mcp/releases).
+2. Add the executable path to your .env file as POWERBI_MCP_PATH.
+3. Open the target .pbix report file in Power BI Desktop before running this app.
+
+Test: Ask the agent for example: "What tables and measures exist in the raport that is open locally?" or "Compare the average body mass across penguin species."
+
+Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+===========================================================================================================================
+*/
 
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
@@ -48,13 +50,11 @@ ChatOptions options = new()
     Tools = [.. tools]
 };
 
+List<ChatMessage> history = [];
 
 Console.WriteLine("09. Agent with External MCP Server (Power BI)");
 Console.WriteLine($"Connected. Loaded {tools.Count} MCP tools: {string.Join(", ", tools.Select(t => t.Name))}\n"); // printing the availbe tools fo user
 Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
-
-
-List<ChatMessage> history = [];
 
 while (true)
 {

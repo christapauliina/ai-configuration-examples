@@ -1,22 +1,25 @@
-﻿// ============================================================================
-// Connecting to a model and creating a history of interactions, so the model can remember previous prompts and responses.
-// 
-// Test: Tell the model your name and ask it to remember it. Then ask it for your name again - notice the difference in token consumption
-// Tip: If wanting to limit token consumption, you can  limit the number of messages in history for example using history.TakeLast(5).
+﻿/*
+===========================================================================================================================
+Connecting to a model and creating a history of interactions, so the model can remember previous prompts and responses.
+ 
+Test: Tell the model your name and ask it to remember it. Then ask it for your name again - notice the difference in token consumption
+Tip: If wanting to limit token consumption, you can  limit the number of messages in history for example using history.TakeLast(5).
 
-// Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// ============================================================================
+Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+===========================================================================================================================
+*/
 
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
 
 IChatClient client = ClientFactory.Create();
-Console.WriteLine("02. Model with History Demo");
-Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 // Create a list to hold the history of interactions with the model
 // Model is still stateless, the application is responsible for keeping track of the history and sending it to the model with each prompt.
 List<ChatMessage> history = [];
+
+Console.WriteLine("02. Model with History Demo");
+Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 while (true)
 {

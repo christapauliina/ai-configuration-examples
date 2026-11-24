@@ -1,10 +1,12 @@
-﻿// ============================================================================
-// Showcasing giving agent a simple custom tool for its use. 
-// 
-// Test: Ask the model to count the number of files in your Downloads folder. The model will call the custom tool CountDownloadedFiles() to get the result.
-//
-// Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// ============================================================================
+﻿/*
+===========================================================================================================================
+Showcasing giving agent a simple custom tool for its use. 
+ 
+Test: Ask the model to count the number of files in your Downloads folder. The model will call the custom tool CountDownloadedFiles() to get the result.
+
+Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+===========================================================================================================================
+*/
 
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
@@ -16,11 +18,6 @@ IChatClient client = ClientFactory.CreateResponsesClient()
     .UseFunctionInvocation()
     .Build();
 
-Console.WriteLine("07. Model with Custom Tool");
-Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
-
-List<ChatMessage> history = [];
-
 // Giving the tool to the model in ChatOptions so it knows it has access to CountDownloadedFiles() tool.
 ChatOptions options = new()
 {
@@ -31,6 +28,11 @@ ChatOptions options = new()
             description: "Counts the number of files in the Downloads folder")
     ]
 };
+
+List<ChatMessage> history = [];
+
+Console.WriteLine("07. Model with Custom Tool");
+Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 while (true)
 {

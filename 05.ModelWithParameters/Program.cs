@@ -1,23 +1,20 @@
-﻿// ============================================================================
-// Connecting to a model and configuring it's behavior via parameters.
-//
-// Test: Give the model a creative but open prompt, for example give three topics for short stories and a example title for each. Give the same prompt twice.
-// Temperature, TopP,: the deterministic model may give almost same answer in both times as the creative model may give two wildy different answers.
-// MaxOutputTokens: the deterministic model may give a shorter answer or cut it's answer off. 
-// Also notice the difference in token consumption between the two configurations.
-//
-// Note1: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// Note2: Usually you would configure only Temperature or TopP, not both.
-// ============================================================================
+﻿/*
+===========================================================================================================================
+Connecting to a model and configuring it's behavior via parameters.
 
+Test: Give the model a creative but open prompt, for example give three topics for short stories and a example title for each. Give the same prompt twice.
+Temperature, TopP,: the deterministic model may give almost same answer in both times as the creative model may give two wildy different answers.
+MaxOutputTokens: the deterministic model may give a shorter answer or cut it's answer off. 
+Also notice the difference in token consumption between the two configurations.
+
+Note1: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+Note2: Usually you would configure only Temperature or TopP, not both.
+===========================================================================================================================
+*/
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
 
-
 IChatClient client = ClientFactory.CreateResponsesClient();
-
-Console.WriteLine("05. Model with Parameters Demo");
-Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 // Configuration 1: Deterministic and concise responses
 var deterministicOptions = new ChatOptions
@@ -36,6 +33,9 @@ var creativeOptions = new ChatOptions
     MaxOutputTokens = 250,
     Reasoning = new ReasoningOptions { Effort = ReasoningEffort.None }
 };
+
+Console.WriteLine("05. Model with Parameters Demo");
+Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 while (true)
 {

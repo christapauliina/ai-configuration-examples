@@ -1,11 +1,12 @@
-﻿// ========================================================================================================================================================
-// Connecting an agent to an custom MCP server 
-//
-// Test: Greet the agent and notice the token consumption. Then ask the agent to count the number of files in your Downloads folder and the total size of files in your Downloads folder.
-//
-// Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// ========================================================================================================================================================
+﻿/*
+===========================================================================================================================
+Connecting an agent to an custom MCP server 
 
+Test: Greet the agent and notice the token consumption. Then ask the agent to count the number of files in your Downloads folder and the total size of files in your Downloads folder.
+
+Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+===========================================================================================================================
+*/
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
 using ModelContextProtocol.Client;
@@ -15,6 +16,7 @@ IChatClient client = ClientFactory.CreateResponsesClient()
     .UseFunctionInvocation()
     .Build();
 
+// Configure the process and launch command for the local MCP server (communicating over stdio)
 var transport = new StdioClientTransport(new StdioClientTransportOptions
 {
     Name = "CustomDownloadsMcp",
@@ -22,10 +24,13 @@ var transport = new StdioClientTransport(new StdioClientTransportOptions
     Arguments = ["run", "--project", "../../../../09-CustomMCP/09-CustomMCP.csproj"]
 });
 
+// Start the MCP server process and establish a client connection
 await using McpClient mcpClient = await McpClient.CreateAsync(transport);
 
+// Retrieve the available tools exposed by the MCP server
 IList<McpClientTool> tools = await mcpClient.ListToolsAsync();
 
+// Register the tools in ChatOptions so the LLM knows they exist and can invoke them
 ChatOptions options = new()
 {
     Tools = [.. tools]
@@ -34,7 +39,6 @@ ChatOptions options = new()
 Console.WriteLine("10. Agent with Custom MCP Server");
 Console.WriteLine($"Connected. Loaded {tools.Count} MCP tools: {string.Join(", ", tools.Select(t => t.Name))}\n"); 
 Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
-
 
 List<ChatMessage> history = [];
 

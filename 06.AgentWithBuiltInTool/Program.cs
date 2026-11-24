@@ -1,29 +1,31 @@
-﻿// ============================================================================
-// Giving the model the ability to search the internet via the built-in web search tool.
-// 
-// Test:
-// 1. greet the model briefly - notice the token count. Tool's json schema goes with every API call, even if you don't use the tool
-// 2. Ask the model a question about the latest  information that requires an internet search. Notice the token consumption - tool results are also stored in history and sent to the model with each prompt, which increases token consumption. 
-//
-// Tip: You can remove tool results from history if you want to limit token consumption, but then the model will not have access to the tool results in future prompts. Remember to delete both the tool call and tool result, or you might get an error from the model about a missing tool call for a tool result in history.
-//
-// Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
-// ============================================================================
+﻿/*
+===========================================================================================================================
+Giving the model the ability to search the internet via the built-in web search tool.
+ 
+Test:
+1. greet the model briefly - notice the token count. Tool's json schema goes with every API call, even if you don't use the tool
+2. Ask the model a question about the latest  information that requires an internet search. Notice the token consumption - tool results are also stored in history and sent to the model with each prompt, which increases token consumption. 
 
+Tip: You can remove tool results from history if you want to limit token consumption, but then the model will not have access to the tool results in future prompts. Remember to delete both the tool call and tool result, or you might get an error from the model about a missing tool call for a tool result in history.
+
+Note: As intended to showcase the flow, there is no error handling, logging, or any other production-ready features in this demo.
+===========================================================================================================================
+*/
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
 
 IChatClient client = ClientFactory.CreateResponsesClient();
-Console.WriteLine("06. Agent with Built-in Tool");
-Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
-
-List<ChatMessage> history = [];
 
 // Giving chat options to the model to use a built-in tool for web browsing. 
 ChatOptions options = new()
 {
     Tools = [new HostedWebSearchTool()]
 };
+
+List<ChatMessage> history = [];
+
+Console.WriteLine("06. Agent with Built-in Tool");
+Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 while (true)
 {
