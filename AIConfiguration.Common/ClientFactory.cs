@@ -23,6 +23,8 @@ public static class ClientFactory
             .AsIChatClient(); // using IChatClient interface for abstraction and flexibility - changing platforms in the future will be easier.
     }
 
+
+#pragma warning disable OPENAI001
     public static IChatClient CreateResponsesClient()
     {
         Env.TraversePath().Load();
@@ -37,6 +39,7 @@ public static class ClientFactory
             .GetResponsesClient()       
             .AsIChatClient(model);     
     }
-    
+#pragma warning restore OPENAI001
+
 }
 

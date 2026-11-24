@@ -9,20 +9,19 @@
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
 
-// Wrap the base client with function invocation middleware.
+// Enable automatic local tool execution.
 // Unlike built-in cloud tools, custom tools run locally in our application—this automatically intercepts tool call requests from the model, executes our C# method, and sends the result back.
 IChatClient client = ClientFactory.CreateResponsesClient()
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();
 
-Console.WriteLine("04. Model with Custom Tool");
+Console.WriteLine("07. Model with Custom Tool");
 Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 List<ChatMessage> history = [];
 
-
-// Giving chat options to the model to use a custom tool for counting files in Downloads folder.
+// Giving the tool to the model in ChatOptions so it knows it has access to CountDownloadedFiles() tool.
 ChatOptions options = new()
 {
     Tools = [

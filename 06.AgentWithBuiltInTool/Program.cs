@@ -13,10 +13,8 @@
 using AIConfiguration.Common;
 using Microsoft.Extensions.AI;
 
-
-
 IChatClient client = ClientFactory.CreateResponsesClient();
-Console.WriteLine("03. Agent with Built-in Tool");
+Console.WriteLine("06. Agent with Built-in Tool");
 Console.WriteLine("Enter a prompt or 'quit' to exit:\n");
 
 List<ChatMessage> history = [];
