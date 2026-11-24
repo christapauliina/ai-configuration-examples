@@ -9,7 +9,7 @@ The repository walks step-by-step from raw stateless inference up to enterprise 
 > ###  Companion Documentation & Visual Showcases
 > **No API key or Power BI environment configured?**  
 > Explore the full companion site with step-by-step knowledge base, UI screenshots, run traces, and token benchmarks:  
-> [AI Configuration Documentation & Showcases](https://christapauliina.github.io/AI-configuration/)
+> [AI Configuration Documentation & Showcases](https://christapauliina.github.io/AI-configuration/llm-configuration/)
 
 ---
 
