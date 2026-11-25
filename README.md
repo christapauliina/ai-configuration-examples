@@ -1,10 +1,6 @@
-# AI Configuration & Orchestration Patterns (.NET 10)
+# AI Configuration Examples (.NET 10)
 
-A progressive series of C# console applications demonstrating modern generative AI architecture in .NET 10 using `Microsoft.Extensions.AI` and the Model Context Protocol (MCP). 
-
-The repository walks step-by-step from raw stateless inference up to enterprise MCP tool servers and multi-agent collaborative workflows.
-
----
+Eleven small C# console apps that show, one concept at a time, how an LLM becomes an agent: from a stateless call to conversation memory, system prompts, reasoning control, tools, MCP servers and multi-agent orchestration. Built with `Microsoft.Extensions.AI` and the Model Context Protocol (MCP). Every app prints token usage so you can see what each configuration costs.
 
 > ###  Companion Documentation & Visual Showcases
 > **No API key or Power BI environment configured?**  
@@ -13,83 +9,78 @@ The repository walks step-by-step from raw stateless inference up to enterprise 
 
 ---
 
-##  Architectural Progression
+## The projects
 
-Each project isolates a single architectural concept, progressively layering complexity:
+Each project isolates one concept. The header comment of every `Program.cs` contains a **Test:** instruction describing what to try and what to notice.
 
-| # | Project | Core Concept | Key APIs & Patterns |
-|---|---|---|---|
-| **01** | 01-StatelessModel | Single-turn inference | `IChatClient`, raw string prompt, token counting |
-| **02** | 02-ModelWithHistory | Conversation state | `ChatMessage`, `List<ChatMessage>`, context window management |
-| **03** | 03-ModelWithSystemPrompt | Guardrails & persona | `ChatOptions.Instructions`, system prompt boundaries |
-| **04** | 04-ModelWithReasoningControl | Reasoning model control | OpenAI Responses API, `ReasoningOptions`, `ReasoningEffort`, reasoning tokens |
-| **05** | 05-ModelWithParameters | Output variance & determinism | `Temperature`, `TopP`, `MaxOutputTokens`, reasoning bypass |
-| **06** | 06-AgentWithBuiltInTool | Cloud-hosted server tools | `HostedWebSearchTool`, tool schemas, annotations & citations |
-| **07** | 07-AgentWithCustomTool | Local function invocation | `AIFunctionFactory.Create()`, `.UseFunctionInvocation()` middleware |
-| **08** | 08-AgentWithExternalMCP | External MCP client (Power BI) | `StdioClientTransport`, `McpClient.ListToolsAsync()`, DAX query execution |
-| **09** | 09-CustomMCP | Building a C# MCP Server | `ModelContextProtocol.Server`, `[McpServerTool]`, stdio transport |
-| **10** | 10-AgentWithCustomMCP | Consuming custom MCP Server | Orchestrating an agent with the local stdio MCP server from project 09 |
-| **11** | 11-MultiAgentOrchestration | Autonomous agent collaboration | Hierarchical agent pattern: Analyst invokes Researcher tool, feeds Writer agent |
+| # | Project | Concept | What to observe | Docs |
+|---|---|---|---|---|
+| 01 | `01-StatelessModel` | Single-turn inference, `IChatClient` | The model forgets your name between prompts | [Memory](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/01.model-memory) |
+| 02 | `02-ModelWithHistory` | Application-side conversation state | Memory works, input tokens grow every turn | [Memory](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/01.model-memory) |
+| 03 | `03-ModelWithSystemPrompt` | `ChatOptions.Instructions` | Off-topic questions are declined | [System prompt](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/02.model-systemprompt) |
+| 04 | `04-ModelWithReasoningControl` | `ReasoningOptions`, Responses API | Reasoning tokens and trace, low vs high | [Parameters](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/03.model-parameters) |
+| 05 | `05-ModelWithParameters` | `Temperature`, `TopP`, `MaxOutputTokens` | Deterministic vs creative output | [Parameters](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/03.model-parameters) |
+| 06 | `06-AgentWithBuiltInTool` | `HostedWebSearchTool` | Token cost of hosted tools, citations | [Tools](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/04.agent-tools) |
+| 07 | `07-AgentWithCustomTool` | `AIFunctionFactory`, `.UseFunctionInvocation()` | Local tool call, small token footprint | [Tools](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/04.agent-tools) |
+| 08 | `08-AgentWithExternalMCP` | MCP client (Power BI) | Large tool list, large token overhead | [MCP](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/05.agent-mcp) |
+| 09 | `09-CustomMCP` | Building an MCP server (`[McpServerTool]`) | Two focused tools over stdio | [MCP](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/05.agent-mcp) |
+| 10 | `10-AgentWithCustomMCP` | Agent using the server from 09 | Same task, a fraction of the tokens | [MCP](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/05.agent-mcp) |
+| 11 | `11-MultiAgentOrchestration` | Researcher → Analyst → Writer | Per-agent token usage, context isolation | [Orchestration](https://christapauliina.github.io/AI-configuration/llm-configuration/configurations/06.advanced-orchestration) |
 
----
-
-## Solution Architecture
-
-All projects build on top of a shared core library:
-
-* **`AIConfiguration.Common`**
-  * `ClientFactory`: Factory providing abstracted `IChatClient` instances for both the standard **Chat Completions API** (`/v1/chat/completions`) and the newer **Responses API** (`/v1/responses`).
-  * `ResponseExtension`: Centralized diagnostic helpers for token consumption, reasoning traces, and tool call inspection.
+### Shared library: `AIConfiguration.Common`
+- `ClientFactory` — returns an `IChatClient` for either the Chat Completions API (`Create()`) or the Responses API (`CreateResponsesClient()`), configured from `.env`.
+- `ResponseExtension` — helpers that print token usage, reasoning traces and tool calls.
 
 ---
 
-##  Getting Started
+## Getting started
 
 ### Prerequisites
-* [.NET 10 SDK](https://dotnet.microsoft.com/download)
-* An Azure OpenAI or OpenAI API endpoint with key
-* *(Optional)* [Power BI Desktop](https://powerbi.microsoft.com/desktop/) and the [Power BI Modeling MCP server](https://github.com/microsoft/powerbi-modeling-mcp/releases) (for project `08`)
+- [.NET 10 SDK](https://dotnet.microsoft.com/download)
+- An Azure OpenAI / Microsoft Foundry or OpenAI-compatible endpoint with an API key
+- A model deployment. Demos 04 and 05 assume a **reasoning-capable model** (the docs use GPT-5.2). Demos 01–03 work with simpler chat models.
+- *(Demo 08 only)* [Power BI Desktop](https://powerbi.microsoft.com/desktop/) and the [Power BI Modeling MCP server](https://github.com/microsoft/powerbi-modeling-mcp/releases)
 
-### Configuration
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/christapauliina/ai-configuration-examples.git
-   cd ai-configuration-examples
-   ```
-
-2. Copy `.env.example` to `.env` in the repository root:
-   ```bash
-   cp .env.example .env
-   ```
-
-3. Populate your `.env` variables:
-   ```env
-   ENDPOINT=https://your-resource.services.ai.azure.com/openai/v1/
-   API_KEY=your-api-key-here
-   MODEL=your-deployment-name
-   POWERBI_MCP_PATH=C:\path\to\powerbi-modeling-mcp.exe
-   ```
-   *(Variables are automatically resolved by `ClientFactory` across all projects via `DotNetEnv`)*.
-
----
-
-##  Running the Demos
-
-Run any project directly using the .NET CLI:
+### Configure
 
 ```bash
-# 1. Basic stateless inference
+git clone https://github.com/christapauliina/ai-configuration-examples.git
+cd ai-configuration-examples
+cp .env.example .env     # Windows PowerShell: copy .env.example .env
+```
+
+Edit `.env`:
+
+```env
+ENDPOINT=https://your-resource.services.ai.azure.com/openai/v1/
+API_KEY=your-api-key-here
+MODEL=your-deployment-name
+POWERBI_MCP_PATH=C:\path\to\powerbi-modeling-mcp.exe   # demo 08 only
+```
+
+`ClientFactory` loads this file automatically (via `DotNetEnv`). `.env` is git-ignored, never commit your key.
+
+### Run
+
+```bash
 dotnet run --project 01-StatelessModel
-
-# 2. Local custom tool calling
 dotnet run --project 07-AgentWithCustomTool
-
-# 3. Power BI MCP Agent (requires Power BI Desktop open with an .pbix -file)
-dotnet run --project 08-AgentWithExternalMCP
-
-# 4. Multi-agent orchestration
+dotnet run --project 10-AgentWithCustomMCP      # starts 09-CustomMCP itself
 dotnet run --project 11-MultiAgentOrchestration
 ```
 
-> **Note:** The demos are intentionally written for clarity and architectural illustration without production error handling or enterprise logging.
+Type `quit` to exit the chat-style demos.
+
+**Demo 08** needs Power BI Desktop running with [`PowerBi/Penguins.pbix`](PowerBi/) open (Palmer Penguins sample data, see `PowerBi/README.md`).
+
+> **Note:** The demos are written for clarity, not production. They intentionally leave out error handling, retries, logging and tests.
+
+---
+
+## Known limitations / roadmap
+
+- No automated tests (planned:  unit tests for `AIConfiguration.Common`).
+- Demo 10 launches demo 09 via a relative project path, so run it from the repository root.  
+
+## License
+MIT
