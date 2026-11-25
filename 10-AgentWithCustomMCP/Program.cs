@@ -55,7 +55,7 @@ while (true)
 
     ChatResponse response = await client.GetResponseAsync(history, options);
 
-    history.Add(new ChatMessage(ChatRole.Assistant, response.Text));
+    history.AddRange(new ChatMessage(ChatRole.Assistant, response.Text));
 
     Console.WriteLine($"\nAI: {response.Text}");
     ResponseExtension.PrintToolUsage(response);
