@@ -67,7 +67,7 @@ All projects build on top of a shared core library:
    ```env
    ENDPOINT=https://your-resource.services.ai.azure.com/openai/v1/
    API_KEY=your-api-key-here
-   MODEL=gpt-4o-mini
+   MODEL=your-deployment-name
    POWERBI_MCP_PATH=C:\path\to\powerbi-modeling-mcp.exe
    ```
    *(Variables are automatically resolved by `ClientFactory` across all projects via `DotNetEnv`)*.
