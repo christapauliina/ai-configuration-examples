@@ -2,7 +2,7 @@
 
 namespace AIConfiguration.Common
 {
-    public class ResponseExtension
+    public static class ResponseExtension
     {
         public static void PrintTokenUsage(ChatResponse response)
         {
@@ -15,12 +15,32 @@ namespace AIConfiguration.Common
             {
                 switch (content)
                 {
+                    case FunctionCallContent function:
+                        // Local functions and MCP tools: show the tool name and the arguments the model chose.
+                        Console.WriteLine($"[Tool Call] {function.Name}({FormatArguments(function.Arguments)})");
+                        break;
                     case ToolCallContent call:
-                        Console.WriteLine($"[Tool Call] {call.GetType().Name}");
+                        // Hosted tools (e.g. web search) don't expose a function name, so show the type and call id.
+                        Console.WriteLine($"[Tool Call] {call.GetType().Name} (CallId: {call.CallId})");
                         break;
                 }
             }
         }
+
+        private static string FormatArguments(IDictionary<string, object?>? arguments)
+        {
+            if (arguments is null || arguments.Count == 0)
+                return string.Empty;
+            // Long values (e.g. DAX queries) are truncated to keep the console output readable.
+            return string.Join(", ", arguments.Select(a =>
+            {
+                string value = a.Value?.ToString() ?? "null";
+                if (value.Length > 80)
+                    value = value[..80] + "...";
+                return $"{a.Key}={value}";
+            }));
+        }
+
 
         public static void PrintReasoning(ChatResponse response)
         {
