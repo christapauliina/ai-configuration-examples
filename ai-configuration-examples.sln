@@ -23,13 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-AgentWithCustomTool", "0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-ModelWithSystemPrompt", "03-ModelWithSystemPrompt\03-ModelWithSystemPrompt.csproj", "{2E39D364-2DF8-4FC8-A4D9-8B0F3D19D595}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ModelWithReasoningControl", "04-ModelWithReasoningControl\04.ModelWithReasoningControl.csproj", "{2710F632-6EDE-4F4F-9C5C-4C70E2D52D1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-ModelWithReasoningControl", "04-ModelWithReasoningControl\04-ModelWithReasoningControl.csproj", "{2710F632-6EDE-4F4F-9C5C-4C70E2D52D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.ModelWithParameters", "05-ModelWithParameters\05.ModelWithParameters.csproj", "{56CE1512-BCB0-433A-8496-1503A5C87094}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-ModelWithParameters", "05-ModelWithParameters\05-ModelWithParameters.csproj", "{56CE1512-BCB0-433A-8496-1503A5C87094}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-CustomMCP", "09-CustomMCP\09-CustomMCP.csproj", "{05C7378F-5153-4BC7-8598-F1A369DF89BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.AgentWithCustomMCP", "10-AgentWithCustomMCP\10.AgentWithCustomMCP.csproj", "{2D3A0C9C-8E20-4E7B-AAF2-6D01D43C01EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-AgentWithCustomMCP", "10-AgentWithCustomMCP\10-AgentWithCustomMCP.csproj", "{2D3A0C9C-8E20-4E7B-AAF2-6D01D43C01EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-AgentWithExternalMCP", "08-AgentWithExternalMCP\08-AgentWithExternalMCP.csproj", "{F034C698-C26F-41F6-4367-03873CE881BC}"
 EndProject
